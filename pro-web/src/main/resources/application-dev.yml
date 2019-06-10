@@ -1,0 +1,42 @@
+app:
+  dao:
+    dataSource:
+      driverClass: com.highgo.jdbc.Driver
+      password: highgo123
+      url: jdbc:highgo://10.254.23.54:5866/pro_demo?useUnicode=true&characterEncoding=utf-8
+      username: highgo
+    jpa:
+      dialect: com.fosung.framework.dao.dialect.PostgreSQL9DialectWithoutFK
+      schema: public
+      showSql: true
+  secure:
+    auth:
+      enable: false
+      urlAuths:
+      - filter: anon
+        url: /index,/facade/user/info
+      - filter: roles[SMS_ADMIN]
+        url: /api/admin/**
+      - filter: logineduser
+        url: /**
+    referer:
+      enable: false
+    sso:
+      enable: true
+      oauth2Configs:
+      - registrationId: demo
+        authorizationUri: http://test-sso.cloud.dtdjzx.gov.cn/oauth/authorize
+        clientName: 测试客户端名称
+        clientId: pro_web_client
+        clientSecret: pro_web_secret
+        frontPageUrl: http://localhost:9528
+        redirectUriTemplate: http://localhost:8080/oauth2/login
+        tokenUri: http://10.254.23.10:5001/oauth/token
+        userInfoUri: http://10.254.23.10:5001/oauth/userinfo
+  session:
+    cookieSessionEncode: false
+spring:
+  redis:
+    database: 1
+    host: 10.254.23.9
+    port: 6379

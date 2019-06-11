@@ -1,4 +1,4 @@
-package com.fosung.sms.controller.front;
+package com.fosung.pro.rest.front;
 
 import com.fosung.framework.common.config.AppSecureProperties;
 import com.fosung.framework.common.secure.auth.AppUserDetails;

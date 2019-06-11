@@ -1,4 +1,4 @@
-package com.fosung.sms.controller.common.dto;
+package com.fosung.pro.rest.common.dto;
 
 import com.fosung.framework.common.dto.support.DTOCallbackHandlerAdaptor;
 import lombok.Getter;

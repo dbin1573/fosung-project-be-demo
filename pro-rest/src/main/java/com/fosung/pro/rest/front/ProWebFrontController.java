@@ -1,10 +1,10 @@
-package com.fosung.sms.controller.front;
+package com.fosung.pro.rest.front;
 
 import com.fosung.framework.common.json.JsonMapper;
 import com.fosung.framework.common.secure.auth.AppUserDetails;
 import com.fosung.framework.common.secure.auth.AppUserDetailsService;
 import com.fosung.framework.common.util.UtilAuthentication;
-import com.fosung.sms.controller.common.ProWebBaseController;
+import com.fosung.pro.rest.common.ProWebBaseController;
 import com.fosung.framework.web.http.ResponseParam;
 import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;

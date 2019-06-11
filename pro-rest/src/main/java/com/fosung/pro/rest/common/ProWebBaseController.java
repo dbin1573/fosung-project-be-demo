@@ -1,4 +1,4 @@
-package com.fosung.sms.controller.common;
+package com.fosung.pro.rest.common;
 
 
 import com.fosung.framework.web.http.AppIBaseController;

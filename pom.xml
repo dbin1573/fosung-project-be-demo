@@ -25,7 +25,7 @@
     <modules>
         <module>pro-facade</module>
         <module>pro-service</module>
-        <module>pro-web</module>
+        <module>pro-rest</module>
     </modules>
 
     <repositories>

@@ -24,7 +24,12 @@
             <artifactId>pro-service</artifactId>
             <version>0.1-SNAPSHOT</version>
         </dependency>
-
+<!--用User 库-->
+        <dependency>
+            <groupId>com.fosung.infrastructure</groupId>
+            <artifactId>infrastructure-web</artifactId>
+            <version>${framework.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -39,5 +44,8 @@
             </plugin>
         </plugins>
     </build>
+
+
+
 
 </project>

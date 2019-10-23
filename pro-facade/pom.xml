@@ -20,5 +20,12 @@
             <version>${framework.version}</version>
         </dependency>
 
+
+
+        <dependency>
+            <groupId>com.fosung.framework</groupId>
+            <artifactId>framework-dao</artifactId>
+            <version>${framework.version}</version>
+        </dependency>
     </dependencies>
 </project>

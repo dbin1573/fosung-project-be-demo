@@ -21,7 +21,7 @@ public class ProWebIndexController extends AppIBaseController {
     private String defaultFrontPage = "redirect:http://localhost:9528/" ;
 
     @GetMapping
-    public String index(){
+    public String index(){  //定点
         AppUserDetails appUserDetails = getLoginAppUserDetails() ;
         String clientRegistrationId = appUserDetails.getClientRegistrationId() ;
 

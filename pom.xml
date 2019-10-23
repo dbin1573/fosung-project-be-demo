@@ -15,48 +15,65 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
 
+<!--？？docker？？-->
     <properties>
         <fegin.version>1.4.4.RELEASE</fegin.version>
         <framework.version>0.7-SNAPSHOT</framework.version>
         <!--云平台-->
         <docker.image.prefix>cloud</docker.image.prefix>
     </properties>
-
+<!--模块化-->
     <modules>
         <module>pro-facade</module>
         <module>pro-service</module>
         <module>pro-rest</module>
     </modules>
+    <!--Unknown system variable 'query_cache_size'-->
+    <dependencies>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.45</version>
+        </dependency>
 
+
+
+    </dependencies>
+<!--远程仓库位置-->
     <repositories>
         <repository>
             <id>nexus</id>
-            <name>nexus repository</name>
-            <url>http://maven.fosung.com/nexus/content/groups/jar-all/</url>
+            <name>nexusrepository</name>
+            <url>http://nexus.fosung.com:8081/nexus/content/groups/jar-all/</url>
             <snapshots>
                 <enabled>true</enabled>
                 <updatePolicy>always</updatePolicy>
             </snapshots>
         </repository>
     </repositories>
+<!--maven插件的远程仓库-->
     <pluginRepositories>
         <pluginRepository>
             <id>nexus</id>
-            <name>Team Nexus Repository</name>
-            <url>http://maven.fosung.com/nexus/content/groups/jar-all/</url>
+            <name>TeamNexusRepository</name>
+            <url>http://nexus.fosung.com:8081/nexus/content/groups/jar-all/</url>
         </pluginRepository>
     </pluginRepositories>
+<!-- 使用分发管理将本项目打成jar包，直接上传到指定服务器 -->
     <distributionManagement>
         <repository>
             <id>releases</id>
-            <name>Nexus Release Repository</name>
-            <url>http://maven.fosung.com/nexus/content/repositories/releases/</url>
+            <name>NexusReleaseRepository</name>
+            <url>http://nexus.fosung.com:8081/nexus/content/repositories/releases/</url>
         </repository>
+        <!--快照-->
         <snapshotRepository>
             <id>snapshot</id>
-            <name>Nexus snapshot Repository</name>
-            <url>http://maven.fosung.com/nexus/content/repositories/snapshots/</url>
+            <name>NexussnapshotRepository</name>
+            <url>http://nexus.fosung.com:8081/nexus/content/repositories/snapshots/</url>
         </snapshotRepository>
     </distributionManagement>
+
+
 
 </project>

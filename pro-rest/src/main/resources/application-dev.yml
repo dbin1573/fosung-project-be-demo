@@ -1,28 +1,34 @@
 app:
   dao:
     dataSource:
-      driverClass: com.highgo.jdbc.Driver
-      password: highgo123
-      url: jdbc:highgo://10.254.23.54:5866/pro_demo?useUnicode=true&characterEncoding=utf-8
-      username: highgo
+      driverClass: com.mysql.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/fosung?
+      username: root
+      password: toor
+#      driverClass: com.highgo.jdbc.Driver
+#      password: highgo123
+#      url: jdbc:highgo://10.254.23.54:5866/pro_demo?useUnicode=true&characterEncoding=utf-8
+#      username: highgo
     jpa:
-      dialect: com.fosung.framework.dao.dialect.PostgreSQL9DialectWithoutFK
-      schema: public
+#      dialect: com.fosung.framework.dao.dialect.PostgreSQL9DialectWithoutFK
+#      schema: public
       showSql: true
   secure:
     auth:
       enable: false
       urlAuths:
-      - filter: anon
-        url: /index,/facade/user/info
-      - filter: roles[SMS_ADMIN]
-        url: /api/admin/**
-      - filter: logineduser
-        url: /**
+       - filter: anon
+         url: /**
+#      - filter: anon
+#        url: /index,/facade/user/info
+#      - filter: roles[SMS_ADMIN]
+#        url: /api/admin/**
+#      - filter: logineduser
+#        url: /**
     referer:
       enable: false
     sso:
-      enable: true
+      enable: false
       oauth2Configs:
       - registrationId: demo
         authorizationUri: http://test-sso.cloud.dtdjzx.gov.cn/oauth/authorize
@@ -38,5 +44,5 @@ app:
 spring:
   redis:
     database: 1
-    host: 10.254.23.9
+    host: 127.0.0.1
     port: 6379

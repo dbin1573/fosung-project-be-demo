@@ -15,7 +15,7 @@ import org.springframework.core.annotation.Order;
 @Slf4j
 @Configuration
 @Order(Ordered.HIGHEST_PRECEDENCE)
-@ComponentScan(basePackages = "com.fosung.pro.service")
+@ComponentScan(basePackages = "com.fosung.pro.service")//com.fosung.pro.service
 public class ProServiceAutoConfiguration {
 
     public ProServiceAutoConfiguration() {

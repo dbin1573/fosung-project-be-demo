@@ -13,10 +13,12 @@ import java.util.Map;
 public class UserServiceImpl extends AppJPABaseDataServiceImpl<User, UserDao>
         implements IUserService {
 
+    /**
+     * 查询条件表达式
+     */
     private Map<String, String> expressionMap = new LinkedHashMap<String, String>() {
         {
             put("name", "userName:LIKE");// EQ  GT LT
-
         }
     };
 

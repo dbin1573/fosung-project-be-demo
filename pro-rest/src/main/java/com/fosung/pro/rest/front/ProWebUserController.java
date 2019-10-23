@@ -11,17 +11,16 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-//import fosung-project-be-demo.pro-facade.src.main.java.com.fosung.pro.service.IUserService;
 @RestController
 @RequestMapping("/user")
 public class ProWebUserController {
 
     @Autowired
-    IUserService iUserService;
+    private IUserService iUserService;
 
     @RequestMapping("/add")
-    public String add(){
-        User user=new User();
+    public String add() {
+        User user = new User();
         user.setUserName("a");
         user.setPassWord("b");
         user.setRealName("c");
@@ -29,15 +28,16 @@ public class ProWebUserController {
         iUserService.save(user);
         return "add....";
     }
+
     @RequestMapping("/del")
-    public String del(){
+    public String del() {
         iUserService.delete(3375252250560565192L);
         return "del....";
     }
+
     @RequestMapping("/upd")
-    public String upd(Long id){
-        User user=new User();
-//Long id =Long.parseLong("3375267173659324785");
+    public String upd(Long id) {
+        User user = new User();
 
         user.setId(id);
         user.setUserName("aaaaa");
@@ -45,15 +45,15 @@ public class ProWebUserController {
         iUserService.update(user, Arrays.asList("userName"));
         return "upd....";
     }
-    @RequestMapping("/list")
-    public String sea(){
-        Map<String,Object> map = Maps.newHashMap();
 
-        map.put("name","a");
+    @RequestMapping("/list")
+    public String sea() {
+        Map<String, Object> map = Maps.newHashMap();
+
+        map.put("name", "a");
 
         List<User> ls = iUserService.queryAll(map);
-
-        return "sea...."+ls.toString()+ls.size();
+        return "sea...." + ls.toString() + ls.size();
     }
 
 

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../static/js/jquery-1.8.2.min.js"></script>
+    <script src="https://cdn.staticfile.org/vue/2.4.2/vue.min.js"></script>
+    <!--<script src="../static/js/vue.min.js"></script>-->
+    <!--<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>-->
+    <style>
+        .btnA {
+            border-radius: 30%;
+            background-color: lightskyblue;
+        }
+    </style>
+</head>
+<body>
+<div id="root">
+<!--    <p> userName&#45;&#45;passWord&#45;&#45;id</p>
+    <p v-for="item in list">
+        {{item.userName}}&#45;&#45;{{item.passWord}}&#45;&#45;{{item.id}}
+    </p>
+-->
+    <table border="1" cellspacing="0" onclick="reqList()">
+        <tr>
+            <td align="center">id</td>
+            <td>userName</td>
+            <td>passWord</td>
+            <td>realName</td>
+        </tr>
+        <tr v-for="item in list">
+            <td>{{item.id}}</td>
+            <td>{{item.userName}}</td>
+            <td>{{item.passWord}}</td>
+            <td>{{item.realName}}</td>
+        </tr>
+    </table>
+
+    <hr/>
+
+    { {表达式} }方式获取值
+    <h1>site : {{site}}</h1>
+    <h1>url : {{url}}</h1>
+    <h1>copy url:{{}}</h1><!--details()-->
+    表达式运算<h1>{{a+b}}</h1>
+    条件语句
+    <p v-if="isC==false">
+        <button v-on:click="a=11,isC=true" class="btnA">Change up</button>
+    </p>
+    <p v-else="isC==true">
+        <button v-on:click="a=101,isC=false">Change down</button>
+    </p>
+
+    联动输入
+    <input v-model="input1">
+    <input v-model="input1">
+    <P> {{}} </P><!--print1()-->
+    循环遍历
+    <p v-for="v in ls">
+        {{v.a}}--{{v.b}}
+
+    </p>
+
+
+    自定义组件
+    <dbin></dbin>
+
+
+    <hr/>
+    <div>1</div>
+    <!-- <iframe width="100%" height="800px" src="http://www.baidu.com">
+     </iframe>-->
+
+
+</div>
+
+
+</body>
+</html>
+
+<script>
+    window.onload = function () {
+        //reqList();
+    }
+    function reqListForFetch() {
+        fetch("http://localhost:8080/user/list")//,{method:"get"}
+
+            .then(function (resp) {
+                return resp.json()})
+            .then(function (value) {
+                datas.list=value;
+            })
+        /*.then(resp => resp.json())
+            .then(data => datas.list=data)*/
+    }
+    function reqList() {
+        $.ajax({
+            url: "http://localhost:8080/user/list",
+
+            success: function (result) {
+                datas.list = result;
+
+            },
+            error: function (a,b,c) {
+                alert(""+a+b+c)//??
+
+            }
+        })
+    }
+
+
+    // window.onload=function(){
+    Vue.component('dbin', {
+        template: '<strong>你好啊!</strong>'
+    })
+
+    var datas = {
+        site: 'abc',
+        url: 'http://www.dbin.xyz"',
+        a: 1,
+        b: 2,
+        isC: false,
+        input1: '办事果断，别磨叽，敢想敢干',
+        ls: [{
+            a: 1.1,
+            b: 1.2
+        }, {
+            a: 2.2,
+            b: 2.3
+        }],
+        list: [{
+            id: 0,
+            userName: "null",
+            passWord: "null",
+            realName: "null"
+        }]
+    };
+    //Object.freeze(datas)
+    var eq = new Vue({
+        el: '#root',
+        data: datas,
+        created:function(){
+            //reqList()
+            reqListForFetch();
+        },
+        methods: {
+            details: function () {
+                //debugger;
+                //reqList()
+                // return this.url;
+            },
+            print1: function () {
+                //debugger;
+
+                return this.input1;
+            }
+        }
+    });
+
+    /*datas.a=10;
+    console.log(datas.a)
+    eq.a=100;
+    console.log(eq.c)*/
+    // }
+</script>

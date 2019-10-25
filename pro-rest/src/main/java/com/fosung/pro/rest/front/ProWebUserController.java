@@ -68,15 +68,20 @@ public class ProWebUserController {
 
     @RequestMapping("/")
     public void fastView(HttpServletResponse resp) throws IOException {
-      /*  Cookie cname=new Cookie("name","张洪彬");
+        init(resp);
+        resp.sendRedirect("http://localhost:63342/main/pro-rest/templates/vuser.html");
+    }
+
+    //知识测试
+    private void init(HttpServletResponse resp) {
+        //使用Cookie存储信息
+        Cookie cname=new Cookie("name","张洪彬");
         cname.setMaxAge(60*60);
-        resp.addCookie(cname);*/
-
-
+        resp.addCookie(cname);
+        //使用Redis存储信息
         srt.opsForValue().set("name","张洪彬");
         String s=srt.opsForValue().get("name");
         System.out.println(s);
-        resp.sendRedirect("http://localhost:63342/main/pro-rest/templates/vuser.html");
     }
 
 }
